@@ -1,8 +1,9 @@
 package model;
 
 public class Restaurant {
-	private CentraleDeReservation<FormulaireRestaurant> centrale = new CentraleDeReservation<FormulaireRestaurant>(new EntiteReservable[20]);
+	private CentraleDeReservation<FormulaireRestaurant> centrale = new CentraleDeReservation<FormulaireRestaurant>(new EntiteReservable[50]);
 	private CalendrierAnnuel calendrierAnnuel;
+	
 	private class Table extends EntiteReservable<FormulaireRestaurant>{
 		private int nbChaises;
 		private CalendrierAnnuel calendrierDeuxiemeService;
@@ -21,7 +22,7 @@ public class Restaurant {
 				if(formulaireRestaurant.getService() == 1) {
 					calendrierAnnuel.reserver(jour, mois);
 				}else {
-					calendrierAnnuel.reserver(jour, mois);
+					calendrierDeuxiemeService.reserver(jour, mois);
 				}
 				ReservationRestaurant reserve = new ReservationRestaurant(jour, mois, service, id);
 				return reserve;
@@ -36,13 +37,13 @@ public class Restaurant {
 			}else {
 				int jour = formulaireRestaurant.getJour();
 				int mois = formulaireRestaurant.getMois();
-				return calendrierAnnuel.estLibre(jour, mois);
+				return calendrierDeuxiemeService.estLibre(jour, mois);
 			}
 		}
 		
 		public boolean compatible(FormulaireRestaurant formulaireRestaurant) {
 			int convive = formulaireRestaurant.getPersonnes();
-			boolean chaiseParPers = (nbChaises == convive) || (nbChaises+1 == convive);
+			boolean chaiseParPers = ((nbChaises == convive) || (nbChaises+1 == convive));
 			boolean tableLibre = TableLibre(formulaireRestaurant);
 			return chaiseParPers && tableLibre;
 		}
@@ -50,10 +51,10 @@ public class Restaurant {
 	
 	public void ajouterTable(int nbChaise) {
 		Table table = new Table(nbChaise);
-		centrale.ajotuerEntite(table);
+		centrale.ajouterEntite(table);
 	}
 	
-	public int[] donnerPossibilite(FormulaireRestaurant formulaire) {
+	public int[] donnerPossibilites(FormulaireRestaurant formulaire) {
 		return centrale.donnerPossibilites(formulaire);
 	}
 	

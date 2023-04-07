@@ -1,8 +1,8 @@
 package model;
 
 public class ReservationRestaurant extends Reservation{
-	int service;
-	int numTable;
+	private int service;
+	private int numTable;
 	
 	public ReservationRestaurant (int jour, int mois, int service, int numTable) {
 		super(jour, mois);
@@ -10,13 +10,14 @@ public class ReservationRestaurant extends Reservation{
 		this.numTable = numTable;
 	}
 	
+	@Override
 	public String toString() {
-		String chaine = "Le " + jour + "/" + mois + " : table n�" + numTable;
+		String chaine = "Le " + getJour() + "/" + getMois() + " : table n°" + numTable;
 		if(service==1) {
-			chaine += " pour le premier service.";
+			chaine += " pour le premier service.\n";
 		}
 		else {
-			chaine += " pour le deuxième service.";
+			chaine += " pour le deuxième service.\n";
 		}
 		return chaine;
 	}

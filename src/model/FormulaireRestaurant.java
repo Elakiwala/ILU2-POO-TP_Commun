@@ -4,7 +4,7 @@ public class FormulaireRestaurant extends Formulaire{
 	int service;
 	int personnes;
 	
-	public FormulaireRestaurant(int jour, int mois, int service, int personne) {
+	public FormulaireRestaurant(int jour, int mois, int personne, int service) {
 		super(jour, mois);
 		this.service = service;
 		this.personnes = personne;

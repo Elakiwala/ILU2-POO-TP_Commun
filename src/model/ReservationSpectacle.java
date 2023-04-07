@@ -1,8 +1,8 @@
 package model;
 
 public class ReservationSpectacle extends Reservation {
-	int zone;
-	int numChaise;
+	private int zone;
+	private int numChaise;
 	
 	public ReservationSpectacle(int jour, int mois, int zone, int numChaise) {
 		super(jour, mois);
@@ -10,8 +10,9 @@ public class ReservationSpectacle extends Reservation {
 		this.numChaise = numChaise;
 	}
 
+	@Override
 	public String toString() {
-		String chaine = "Le "+ jour + "/" + mois + " :  chaise n°" + numChaise + " à la zone n°" + numZone + ".";
+		String chaine = "Le "+ getJour()+ "/" + getMois()+ " :  chaise n°" + numChaise + " à la zone n°" + zone + ".";
 		return chaine;
 	}
 }

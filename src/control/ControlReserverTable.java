@@ -1,16 +1,19 @@
 package control;
 
-import frontiere.Client;
-import frontiere.Reservation;
-import frontiere.ReservationRestaurant;
+//import frontiere.Client;
+//import frontiere.Reservation;
+//import frontiere.ReservationRestaurant;
 import model.CarnetClientele;
 import model.Formulaire;
 import model.FormulaireRestaurant;
 import model.Restaurant;
+import model.Reservation;
+import model.ReservationRestaurant;
+import model.Client;
 
 public class ControlReserverTable {
 	private CarnetClientele carnetClientel;
-	private Formulaire[] formulaires = new Formulaire[50];
+	private Formulaire[] formulaires = new Formulaire[100];
 	private Restaurant restaurant = new Restaurant();
 	
 	public int[] trouverPossibilite(int jour, int mois, int nombrePersonnes, int numService) {
@@ -24,7 +27,7 @@ public class ControlReserverTable {
 				numeroFormulaire = i;
 			}
 		}
-		int[] possibilites = restaurant.donnerPossibilite(formulaire);
+		int[] possibilites = restaurant.donnerPossibilites(formulaire);
 		int[] retour = new int[possibilites.length + 1];
 		retour[0] = numeroFormulaire;
 		for (int i = 1; i < possibilites.length + 1; i++) {
@@ -34,13 +37,13 @@ public class ControlReserverTable {
 	}
 	
 	public void reserver(int numClient, int numProposition, int numeroFormulaire) {
-		FormulaireRestaurant formulaireRestaurant = formulaires[numeroFormulaire];
+		FormulaireRestaurant formulaireRestaurant = (FormulaireRestaurant) formulaires[numeroFormulaire];
 		formulaires[numeroFormulaire] = null;
 		Reservation reservation = restaurant.reserver(numProposition, formulaireRestaurant);
 		if (reservation instanceof ReservationRestaurant) {
 			ReservationRestaurant reservationRestaurant = (ReservationRestaurant) reservation;
 			Client client = carnetClientel.getClient(numClient);
-			client.ajouterReservation(reservation);
+			client.ajouterReservation(reservationRestaurant);
 		}
 	}
 }

@@ -9,7 +9,7 @@ public class CentraleDeReservation <F extends Formulaire>{
 		this.entites = entite;
 	}
 	
-	public void ajotuerEntite(EntiteReservable<F> entite){
+	public void ajouterEntite(EntiteReservable<F> entite){
 		entites[nbEntite] = entite;
 		nbEntite++;
 		entite.setNumid(nbEntite);
@@ -35,9 +35,8 @@ public class CentraleDeReservation <F extends Formulaire>{
 			numE = entites[i].getNumid();
 			i++;
 		}
-		formulaire.setEntiteReserve(numEntite);
-		Reservation reserve = entites[i].reserver(formulaire);
-		return reserve;
+		formulaire.setEntiteReserve(numE);
+		return entites[i].reserver(formulaire);
 	}
 	
 }

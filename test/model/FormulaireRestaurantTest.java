@@ -1,7 +1,6 @@
 package model;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -26,39 +25,39 @@ class FormulaireRestaurantTest {
 
 	@Test
 	void testGetNombrePersonnes() {
-		assertEquals(NB_PERSONNES, formulaire.getNombrePersonnes(),
-				"Le nombre de personnes devrait être " + NB_PERSONNES);
+		assertEquals(NB_PERSONNES, formulaire.getPersonnes(),
+				"Le nombre de personnes devrait Ãªtre " + NB_PERSONNES);
 	}
 
 	@Test
 	void testGetNumService() {
-		assertEquals(NUM_SERVICE, formulaire.getNumService(), "Le numéro de service devrait être " + NUM_SERVICE);
+		assertEquals(NUM_SERVICE, formulaire.getService(), "Le numÃ©ro de service devrait Ãªtre " + NUM_SERVICE);
 	}
 
 	@Test
 	void getJour() {
-		assertEquals(JOUR, formulaire.getJour(), "Le jour devrait être " + JOUR);
+		assertEquals(JOUR, formulaire.getJour(), "Le jour devrait ï¿½tre " + JOUR);
 	}
 
 	@Test
 	void getMois() {
-		assertEquals(MOIS, formulaire.getMois(), "Le mois devrait être " + MOIS);
+		assertEquals(MOIS, formulaire.getMois(), "Le mois devrait ï¿½tre " + MOIS);
 	}
 
 	@Test
 	void setIdentificationEntite() {
 		FormulaireRestaurant formulaire2 = new FormulaireRestaurant(JOUR, MOIS, NB_PERSONNES, NUM_SERVICE);
-		assertEquals(IDENTIFICATION_1, formulaire2.getIdentificationEntite(),
-				"L'identification du formulaire devrait être " + IDENTIFICATION_1);
-		formulaire2.setIdentificationEntite(IDENTIFICATION_2);
-		assertEquals(IDENTIFICATION_2, formulaire2.getIdentificationEntite(),
-				"L'identification du formulaire devrait être " + IDENTIFICATION_2);
+		assertEquals(IDENTIFICATION_1, formulaire2.getEntiteReserve(),
+				"L'identification du formulaire devrait ï¿½tre " + IDENTIFICATION_1);
+		formulaire2.setEntiteReserve(IDENTIFICATION_2);
+		assertEquals(IDENTIFICATION_2, formulaire2.getEntiteReserve(),
+				"L'identification du formulaire devrait ï¿½tre " + IDENTIFICATION_2);
 	}
 
 	@Test
 	void getIdentificationEntite() {
-		assertEquals(IDENTIFICATION_1, formulaire.getIdentificationEntite(),
-				"L'identification du formulaire devrait être " + IDENTIFICATION_1);
+		assertEquals(IDENTIFICATION_1, formulaire.getEntiteReserve(),
+				"L'identification du formulaire devrait ï¿½tre " + IDENTIFICATION_1);
 	}
 
 }

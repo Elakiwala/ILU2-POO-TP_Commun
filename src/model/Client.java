@@ -5,7 +5,9 @@ public class Client {
 	private String prenom;
 	private String adresseMail;
 	private String mdp;
-
+	private Reservation[] Reservation = new Reservation[100];
+	private int nbReservation = 0;
+	
 	public Client(String nom, String prenom, String adresseMail, String mdp) {
 		this.nom = nom;
 		this.prenom = prenom;
@@ -28,5 +30,11 @@ public class Client {
 		chaine.append("nom=" + nom + ", prenom=" + prenom);
 		chaine.append(", adresseMail=" + adresseMail + ", mdp=" + mdp);
 		return chaine.toString();
+	}
+	
+	public void ajouterReservation(Reservation reservation) {
+		Reservation[nbReservation] = reservation;
+		nbReservation++;
+		
 	}
 }

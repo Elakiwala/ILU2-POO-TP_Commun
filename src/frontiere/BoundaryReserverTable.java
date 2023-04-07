@@ -1,11 +1,10 @@
 package frontiere;
 
 import java.util.Scanner;
-
-import control.Client;
+//import control.Client;
 import control.ControlReserverTable;
-import control.Reservation;
-import control.ReservationRestaurant;
+//import control.Reservation;
+//import control.ReservationRestaurant;
 import model.FormulaireRestaurant;
 
 public class BoundaryReserverTable {
